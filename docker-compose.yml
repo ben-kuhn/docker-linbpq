@@ -7,9 +7,10 @@ services:
     ports:
       - 8081:80
     devices:
-      # Map devices from the host into the container
-      - "/dev/ttyUSB0:/dev/ttyUSB0"
+      # Map serial devices from the host into the container (adjust as needed)
+      - "/dev/ttyUSB0:/dev/ttyACM0"
+      # Map audio devices in to the container (assumes PulseAudio is *not* in use)
+      - "/dev/snd:/dev/snd"
     volumes:
-      - /srv/linbpq/bpq32.cfg:/opt/linbpq/bpq32.cfg
-      - /srv/linbpq/BPQNODES.dat:/opt/linbpq/BPQNODES.dat
-      - /srv/linbpq/docker-linbpq/logs:/opt/linbpq/logs
+      # We are going to mount the entire linbpq directory.    I don't want traffic, mail configs, chat configs, etc... lost in a container move.  Hopefully the build script drops the right stuff in...
+      - /srv/linbpq:/opt/linbpq
