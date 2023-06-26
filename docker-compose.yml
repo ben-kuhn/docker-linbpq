@@ -1,16 +1,16 @@
 version: "3"
 services:
   linbpq:
-    image: ve3lsr/linbpq
-    build: .
+    build:
+      context: /opt/docker/compose/bpq/docker-linbpq
+      dockerfile: ./Dockerfile
     restart: always
     ports:
-      - 8081:80
-    devices:
+      - 8081:8081
+    # Uncomment what is needed below if you are using a serial-connected TNC
+    #devices:
       # Map serial devices from the host into the container (adjust as needed)
-      - "/dev/ttyUSB0:/dev/ttyACM0"
-      # Map audio devices in to the container (assumes PulseAudio is *not* in use)
-      - "/dev/snd:/dev/snd"
+      # - "/dev/ttyUSB0:/dev/ttyACM0"
     volumes:
-      # We are going to mount the entire linbpq directory.    I don't want traffic, mail configs, chat configs, etc... lost in a container move.  Hopefully the build script drops the right stuff in...
-      - /srv/linbpq:/opt/linbpq
+      # We are going to mount the entire linbpq directory.    I don't want traffic, mail configs, chat configs, etc... lost in a container move.
+      - /opt/docker/containerdata/bpq:/opt/linbpq

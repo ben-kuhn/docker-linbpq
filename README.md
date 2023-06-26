@@ -5,16 +5,16 @@ This project uses docker and docker-compose for management. https://docs.docker.
 
 # Getting Started
 
-Download this project and unzip it: https://github.com/VE3LSR/docker-linbpq/archive/master.zip
+Download this project and unzip it: https://github.com/ben-kuhn/docker-linbpq/archive/master.zip
 
 # Running
 
-Edit the file `bpq32.cfg` 
+Edit the file `bpq32.cfg` and put it in the directory you have mounted to /opt/linbpq in the container
 run `docker-compose up -d` to start.
 
 # Updating
 
-Updating is as simple as `docker-compose pull; docker-compose down; docker-compose up -d`
+Updating is as simple as `docker-compose build; docker-compose down; docker-compose up -d`
 
 # Building
 
