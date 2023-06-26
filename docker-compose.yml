@@ -9,6 +9,7 @@ services:
       - 8080:8080
       - 8010:8010
       - 8011:8011
+      - 10093:10093/udp
     # Uncomment what is needed below if you are using a serial-connected TNC
     #devices:
       # Map serial devices from the host into the container (adjust as needed)
