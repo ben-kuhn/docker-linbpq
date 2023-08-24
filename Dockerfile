@@ -23,4 +23,10 @@ RUN cd BPQAPRS; wget http://www.cantab.net/users/john.wiseman/Documents/Samples/
 # allrf parsing has a buffer size bug. We're overloading the one that comes from John
 ADD overwrite/allrf.html /opt/linbpq/BPQAPRS/HTML/allrf.html
 
+# Create a user
+RUN groupadd -g 2000 bpq \
+&& useradd -m -u 2000 -g bpq bpq
+
+USER bpq
+
 ENTRYPOINT ./start.sh
